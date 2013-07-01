@@ -9,6 +9,7 @@ define(
 
             Draw.init( state );
             Mouse.init( state );
+            Info.init( state );
             Animate.loop();
         };
 

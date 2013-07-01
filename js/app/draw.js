@@ -5,18 +5,20 @@ define(
             state;
 
         Draw.init = function( collection ){
+            var ctx;
             state   = collection;
-            var ctx = state.canvas.getContext();
+            ctx     = state.canvas.getContext();
 
             ctx.fillStyle = "rgba( 0, 0, 0, .6 )";
             ctx.strokeStyle = "rgba( 0, 0, 0, .6 )";
 
+            Load.init( state );
             Load.backgroundView();
-            Load.scrollBuffer();
-        }
+        };
 
         Draw.main = function(){
             state.canvas.reset();
+            Load.backgroundScrollBuffer();
             Draw.background();
             Draw.overlay();
             //Draw.debugMousePaws();

@@ -4,10 +4,13 @@ define(
         var Info = {},
             state;
 
-        Info.main = function( collection ){
-            state  = collection;
+        Info.init = function( collection ){
+            state   = collection;
 
             Draw.init( state );
+        };
+
+        Info.main = function( collection ){
             Info.cellInfo();
         };
 

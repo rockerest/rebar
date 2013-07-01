@@ -19,6 +19,8 @@ define(
         Mouse.init = function( collection ){
             state   = collection;
 
+            Scroll.init( state );
+            Draw.init( state );
             Mouse.bindEventListeners();
         };
 
@@ -29,7 +31,7 @@ define(
                 Mouse.drag();
             }
 
-            Scroll.main( state );
+            Scroll.main();
         };
 
         Mouse.click = function(){

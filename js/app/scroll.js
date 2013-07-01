@@ -4,8 +4,13 @@ define(
         var Scroll = {},
             state;
 
-        Scroll.main = function( collection){
-            state = collection;
+        Scroll.init = function( collection ){
+            state   = collection;
+
+            Draw.init( state );
+        };
+
+        Scroll.main = function(){
             var canvas              = state.canvas.getCanvas(),
                 mouse               = state.canvas.getMouse(),
                 now                 = (function(){ var d = new Date; return d.getTime(); }()),
@@ -67,7 +72,7 @@ define(
 
             switch( dir ){
                 case "right":
-                    valid = view.right < Object.keys( state.cells ).length;
+                    valid = view.right < state.size.columns;
                     break;
                 case "left":
                     valid = view.left > 0;
@@ -76,14 +81,14 @@ define(
                     valid = view.top > 0;
                     break;
                 case "bottom":
-                    valid = view.bottom < Object.keys( state.cells[0] ).length;
+                    valid = view.bottom < state.size.rows;
                     break;
                 default:
                     valid = false;
             }
 
             return valid;
-        }
+        };
 
         return Scroll;
     }
