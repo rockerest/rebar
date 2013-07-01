@@ -1,0 +1,39 @@
+{
+    "spritemap":{
+        "lightdirt":{
+            "x": 0,
+            "y": 0,
+            "w": 16,
+            "h": 16,
+            "name": "Light Dirt"
+        },
+        "bushes1":{
+            "x": 16,
+            "y": 0,
+            "w": 16,
+            "h": 16,
+            "name": "Bushes 1"
+        },
+        "darkdirt":{
+            "x": 32,
+            "y": 0,
+            "w": 16,
+            "h": 16,
+            "name": "Dark Dirt"
+        }
+    },
+    "animations":{
+        "horse":{
+            "x":0,
+            "y":0,
+            "w":16,
+            "h":16,
+            "frames":{
+                "count":7,
+                "cooldown": 25,
+                "period": 3750
+            },
+            "name": "Horse"
+        }
+    }
+}
