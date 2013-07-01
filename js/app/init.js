@@ -6,7 +6,6 @@ define(
 
         init.doneLoading = function( sprites, animations ){
             state   = init.create( sprites, animations );
-            console.log( state );
             Animate.main( state );
         }
 
