@@ -1,31 +1,17 @@
 define(
-    ["app/canvas", "app/animation", "app/tile", "app/animate" ],
-    function( Canvas, Animation, Tile, Animate ){
+    ["app/canvas", "app/animation", "app/tile", "app/animate", "image!img/spritemap.png", "image!img/animations.png" ],
+    function( Canvas, Animation, Tile, Animate, sprites, animations ){
         "use strict";
 
         var init = {},
             state;
 
-        init.doneLoading = function( sprites, animations ){
-            state   = init.create( sprites, animations );
-            Animate.main( state );
-        }
-
         init.start = function(){
-            var spriteMap   = new Image(),
-                animMap     = new Image();
-
-            spriteMap.src   = "img/spritemap.png";
-            animMap.src     = "img/animations.png";
-
-            spriteMap.onload = function(){
-                animMap.onload = function(){
-                    init.doneLoading( spriteMap, animMap );
-                }
-            }
+            state   = init.create();
+            Animate.main( state );
         };
 
-        init.create = function( sprites, animations ){
+        init.create = function(){
             var width   = document.documentElement.clientWidth,
                 height  = document.documentElement.clientHeight,
                 c       = new Canvas({

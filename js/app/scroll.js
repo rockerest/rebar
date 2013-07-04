@@ -16,7 +16,6 @@ define(
             var canvas              = state.canvas.getCanvas(),
                 mouse               = state.canvas.getMouse(),
                 now                 = (function(){ var d = new Date; return d.getTime(); }()),
-                view                = state.view,
                 RIGHT_SCROLL        = (mouse.x >= canvas.width - 40),
                 WAS_RIGHT_SCROLL    = (mouse.px >= canvas.width - 40),
                 BOTTOM_SCROLL       = (mouse.y >= canvas.height - 40),
@@ -27,45 +26,83 @@ define(
                 WAS_LEFT_SCROLL     = (mouse.px <= 40),
                 IS_SCROLL           = ( RIGHT_SCROLL || LEFT_SCROLL || TOP_SCROLL || BOTTOM_SCROLL ),
                 WAS_SCROLL          = ( WAS_RIGHT_SCROLL || WAS_LEFT_SCROLL || WAS_TOP_SCROLL || WAS_BOTTOM_SCROLL ),
-                CAN_SCROLL          = (now >= state.scroll.lastScrolledAt + 90 ) && IS_SCROLL;
+                CAN_SCROLL          = (now >= state.scroll.lastScrolledAt + 90 ) && IS_SCROLL,
+                dir;
 
             if( mouse.over ){
-                if( RIGHT_SCROLL && Scroll.isValidScrollDirection( "right" ) ){
-                    Draw.scrollbar( "right" );
+                dir = "right";
+                if( RIGHT_SCROLL && Scroll.isValidScrollDirection( dir ) ){
+                    Draw.scrollbar( dir );
                     if( CAN_SCROLL ){
-                        state.scroll.lastScrolledAt = now;
-                        state.view.left++;
-                        state.view.right++;
+                        Scroll.direction( dir );
                     }
                 }
 
-                if( LEFT_SCROLL && Scroll.isValidScrollDirection( "left" ) ){
-                    Draw.scrollbar( "left" );
+                dir = "left";
+                if( LEFT_SCROLL && Scroll.isValidScrollDirection( dir ) ){
+                    Draw.scrollbar( dir );
                     if( CAN_SCROLL ){
-                        state.scroll.lastScrolledAt = now;
-                        state.view.left--;
-                        state.view.right--;
+                        Scroll.direction( dir );
                     }
                 }
 
-                if( TOP_SCROLL && Scroll.isValidScrollDirection( "top" ) ){
-                    Draw.scrollbar( "top" );
+                dir = "top";
+                if( TOP_SCROLL && Scroll.isValidScrollDirection( dir ) ){
+                    Draw.scrollbar( dir );
                     if( CAN_SCROLL ){
-                        state.scroll.lastScrolledAt = now;
-                        state.view.top--;
-                        state.view.bottom--;
+                        Scroll.direction( dir );
                     }
                 }
 
-                if( BOTTOM_SCROLL && Scroll.isValidScrollDirection( "bottom" ) ){
-                    Draw.scrollbar( "bottom" );
+                dir = "bottom";
+                if( BOTTOM_SCROLL && Scroll.isValidScrollDirection( dir ) ){
+                    Draw.scrollbar( dir );
                     if( CAN_SCROLL ){
-                        state.scroll.lastScrolledAt = now;
-                        state.view.top++;
-                        state.view.bottom++;
+                        Scroll.direction( dir );
                     }
                 }
             }
+        };
+
+        Scroll.direction = function( dir ){
+            var sides   = [ "top", "right", "bottom", "left" ],
+                coords  = {
+                    "x": 0,
+                    "y": 0
+                },
+                view    = state.view,
+                scroll  = state.scroll,
+                mouse   = state.canvas.getMouse(),
+                now     = (function(){ var d = new Date; return d.getTime(); }());
+
+            switch( dir ){
+                case "right":
+                    view[sides[1]]++;
+                    view[sides[3]]++;
+                    coords.x = -16;
+                    break;
+                case "bottom":
+                    view[sides[0]]++;
+                    view[sides[2]]++;
+                    coords.y = -16;
+                    break;
+                case "top":
+                    view[sides[0]]--;
+                    view[sides[2]]--;
+                    coords.y = 16;
+                    break;
+                case "left":
+                    view[sides[1]]--;
+                    view[sides[3]]--;
+                    coords.x = 16;
+                default:
+                    break;
+            }
+
+            scroll.lastScrolledAt = now;
+
+            mouse.dx += coords.x;
+            mouse.dy += coords.y;
         };
 
         Scroll.isValidScrollDirection = function( dir ){

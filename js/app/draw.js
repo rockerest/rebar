@@ -44,28 +44,21 @@ define(
                 // when to draw
                 view    = state.view,
                 // preparing for loops
-                i,j,x,y,sprite,cell,type,imgSrc;
+                i,j,x,y,w,h,sprite,cell,type,imgSrc;
 
             for( i = view.left, x = 0; i < view.right; i++, x++ ){
-                for( j = view.top, y = 0; j < view.bottom; j++, y++ ){
-                    if( layer[i] !== undefined ){
+                if( layer[i] !== undefined ){
+                    for( j = view.top, y = 0; j < view.bottom; j++, y++ ){
                         cell = layer[i][j];
                         if( cell !== undefined ){
                             type = cell.getType();
+                            imgSrc = type == "animated" ? anims : sprites;
+                            w = x * cell.width;
+                            h = y * cell.height;
 
-                            switch( type ){
-                                case "cell":
-                                default:
-                                    imgSrc = sprites;
-                                    break;
-                                case "animated":
-                                    imgSrc = anims;
-                                    break;
-                            }
-
-                            ctx.drawImage( imgSrc, cell.sprite.x, cell.sprite.y, cell.sprite.w, cell.sprite.h, x * cell.width, y * cell.height, cell.width, cell.height );
+                            ctx.drawImage( imgSrc, cell.sprite.x, cell.sprite.y, cell.sprite.w, cell.sprite.h, w, h, cell.width, cell.height );
                             if( cell.isHighlighted ){
-                                Draw.highlightTile( [x * cell.width, y * cell.height] );
+                                Draw.highlightTile( [w, h] );
                             }
 
                             if( type == "animated" ){
