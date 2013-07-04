@@ -82,7 +82,7 @@ define(
             else{
                 return cell;
             }
-        }
+        };
 
         return Load;
     }

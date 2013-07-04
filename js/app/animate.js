@@ -20,7 +20,7 @@ define(
             Draw.main();
             Mouse.main();
             Info.main( state );
-        }
+        };
 
         return Animate;
     }

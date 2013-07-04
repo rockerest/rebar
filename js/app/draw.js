@@ -68,7 +68,7 @@ define(
                     }
                 }
             }
-        }
+        };
 
         Draw.highlightTile = function( coords ){
             Draw.rectangle({

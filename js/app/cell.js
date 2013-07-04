@@ -24,7 +24,7 @@ define(
             }
 
             return type;
-        }
+        };
 
         return Cell;
     }

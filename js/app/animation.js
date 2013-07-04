@@ -44,7 +44,7 @@ define(
 
         Animation.prototype.getInfo = function(){
             return this.sprite.name + " (frame: " + this.currentFrame + ")";
-        }
+        };
 
         return Animation;
     }
