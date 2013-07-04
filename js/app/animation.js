@@ -1,6 +1,8 @@
 define(
     ["app/cell"],
     function( Cell ){
+        "use strict";
+
         function Animation( sprite ){
             Cell.call( this, sprite );
 

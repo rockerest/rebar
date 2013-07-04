@@ -1,6 +1,7 @@
 define(
     [ "app/cell", "app/tile" ],
     function( Cell, Tile ){
+        "use strict";
 
         var Load = {},
             state;

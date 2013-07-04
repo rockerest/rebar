@@ -1,6 +1,8 @@
 define(
     ["app/load"],
     function( Load ){
+        "use strict";
+
         var Draw = {},
             state;
 

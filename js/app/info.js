@@ -1,6 +1,8 @@
 define(
     ["app/tile", "app/load", "app/draw", "app/write"],
     function( Tile, Load, Draw, Write ){
+        "use strict";
+
         var Info = {},
             state;
 

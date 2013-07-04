@@ -1,5 +1,7 @@
 define({
     text: function( ctx, settings ){
+        "use strict";
+
         if( settings.text === undefined ){
             settings.text = "";
         }

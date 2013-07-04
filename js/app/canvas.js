@@ -1,6 +1,8 @@
 define(
     ["app/mouse"],
     function( Mouse ){
+        "use strict";
+
         return function( settings ){
 
             var canvas  = document.createElement( 'canvas' ),

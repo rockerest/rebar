@@ -1,6 +1,8 @@
 define(
     ["app/tile", "app/draw", "app/scroll", "app/load"],
     function( Tile, Draw, Scroll, Load ){
+        "use strict";
+
         var Mouse = {},
             mouse = {
                 over: false,

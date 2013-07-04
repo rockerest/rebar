@@ -1,5 +1,7 @@
 define(
     function(){
+        "use strict";
+
         function Cell( sprite ){
             this.sprite = sprite;
 

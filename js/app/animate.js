@@ -1,6 +1,8 @@
 define(
     ["app/draw", "app/info", "app/mouse"],
     function( Draw, Info, Mouse ){
+        "use strict";
+
         var Animate = {},
             state;
 

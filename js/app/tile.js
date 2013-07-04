@@ -1,6 +1,8 @@
 define(
     ["json!app/sprites.json"],
     function( Sprites ){
+        "use strict";
+
         var Tile = {};
 
         Tile.getNumberedTile = function( number ){

@@ -1,6 +1,8 @@
 define(
     ["app/canvas", "app/animation", "app/tile", "app/animate" ],
     function( Canvas, Animation, Tile, Animate ){
+        "use strict";
+
         var init = {},
             state;
 

@@ -1,5 +1,3 @@
-"use strict";
-
 requirejs.config({
     "baseUrl": "js/lib",
     "urlArgs": "bust=v0.0.1",

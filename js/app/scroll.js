@@ -1,6 +1,8 @@
 define(
     ["app/draw"],
     function( Draw ){
+        "use strict";
+
         var Scroll = {},
             state;
 
