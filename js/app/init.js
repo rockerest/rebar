@@ -30,7 +30,6 @@ define(
                     "width": width,
                     "height": height - 5
                 }),
-                cells   = {},
                 overlay = {},
                 tile,state,it;
 
@@ -45,8 +44,10 @@ define(
                     "sprites": sprites,
                     "animations": animations
                 },
-                "cells": cells,
-                "overlay": overlay,
+                "layers": new Array(
+                    {},
+                    overlay
+                ),
                 "size": {
                     "height": height - 5,
                     "width": width,

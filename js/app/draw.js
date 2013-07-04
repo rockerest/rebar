@@ -25,52 +25,29 @@ define(
         };
 
         Draw.background = function(){
-            var ctx     = state.canvas.getContext(),
-                bgCells = state.cells,
-                sprites = state.images.sprites,
-                anims   = state.images.animations,
-                view    = state.view,
-                i,j,x,y,sprite,imgSrc,type;
-
-            for( i = view.left, x = 0; i < view.right; i++, x++ ){
-                for( j = view.top, y = 0; j < view.bottom; j++, y++ ){
-                    cell = bgCells[i][j];
-                    type = cell.getType();
-
-                    switch( type ){
-                        case "cell":
-                        default:
-                            imgSrc = sprites;
-                            break;
-                        case "animated":
-                            imgSrc = anims;
-                            break;
-                    }
-
-                    ctx.drawImage( imgSrc, cell.sprite.x, cell.sprite.y, cell.sprite.w, cell.sprite.h, x * cell.width, y * cell.height, cell.width, cell.height );
-                    if( cell.isHighlighted ){
-                        Draw.highlightTile( [x * cell.width, y * cell.height] );
-                    }
-
-                    if( type == "animated" ){
-                        cell.animate();
-                    }
-                }
-            }
+            Draw.layer( 0 );
         };
 
         Draw.overlay = function(){
+            Draw.layer( 1 );
+        };
+
+        Draw.layer = function( layer ){
+                // where and which to draw
             var ctx     = state.canvas.getContext(),
-                overlay = state.overlay,
+                layer   = state.layers[ layer ],
+                // what to draw
                 sprites = state.images.sprites,
                 anims   = state.images.animations,
+                // when to draw
                 view    = state.view,
-                i,j,x,y,sprite,imgSrc,type;
+                // preparing for loops
+                i,j,x,y,sprite,cell,type,imgSrc;
 
             for( i = view.left, x = 0; i < view.right; i++, x++ ){
                 for( j = view.top, y = 0; j < view.bottom; j++, y++ ){
-                    if( overlay[i] !== undefined ){
-                        cell = overlay[i][j];
+                    if( layer[i] !== undefined ){
+                        cell = layer[i][j];
                         if( cell !== undefined ){
                             type = cell.getType();
 
@@ -96,7 +73,7 @@ define(
                     }
                 }
             }
-        };
+        }
 
         Draw.highlightTile = function( coords ){
             Draw.rectangle({

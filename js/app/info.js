@@ -1,6 +1,6 @@
 define(
-    ["app/tile", "app/draw", "app/write"],
-    function( Tile, Draw, Write ){
+    ["app/tile", "app/load", "app/draw", "app/write"],
+    function( Tile, Load, Draw, Write ){
         var Info = {},
             state;
 
@@ -16,8 +16,7 @@ define(
 
         Info.cellInfo = function(){
             var mouse       = state.canvas.getMouse(),
-                coords      = Tile.findBestMatch( [mouse.x, mouse.y] ),
-                cell        = Info.getHighestCell( coords ),
+                cell        = Load.cellFromHighestLayer( Tile.findBestMatch( [mouse.x, mouse.y] ) ),
                 dkGray      = "rgba( 80, 80, 80, .75 )",
                 white       = "rgba( 255, 255, 255, 1 )",
                 text;
@@ -45,27 +44,6 @@ define(
                 }
             );
         };
-
-        Info.getHighestCell = function( coords ){
-            var cell    = state.cells[coords.col + state.view.left ][coords.row + state.view.top ],
-                overlay,highest;
-
-            if( state.overlay[coords.col + state.view.left ] === undefined ){
-                overlay = undefined;
-            }
-            else{
-                overlay = state.overlay[coords.col + state.view.left ][coords.row + state.view.top ];
-            }
-
-            if( overlay === undefined ){
-                highest = cell;
-            }
-            else{
-                highest = overlay;
-            }
-
-            return highest;
-        }
 
         return Info;
     }

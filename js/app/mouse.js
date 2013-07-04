@@ -1,6 +1,6 @@
 define(
-    ["app/tile", "app/draw", "app/scroll"],
-    function( Tile, Draw, Scroll ){
+    ["app/tile", "app/draw", "app/scroll", "app/load"],
+    function( Tile, Draw, Scroll, Load ){
         var Mouse = {},
             mouse = {
                 over: false,
@@ -36,9 +36,7 @@ define(
 
         Mouse.click = function(){
             var mouse   = state.canvas.getMouse(),
-                cells   = state.cells,
-                coords  = Tile.findBestMatch( [mouse.x, mouse.y] ),
-                cell    = state.cells[coords.col + state.view.left ][coords.row + state.view.top ],
+                cell    = Load.cellFromHighestLayer( Tile.findBestMatch( [mouse.x, mouse.y] ) ),
                 now     = (function(){ var d = new Date; return d.getTime(); }());
 
             if( now >= cell.clickCooldown ){
