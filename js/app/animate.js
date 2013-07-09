@@ -19,7 +19,7 @@ define(
             requestAnimationFrame( Animate.loop );
             Draw.main();
             Mouse.main();
-            Info.main( state );
+            Info.main();
         };
 
         return Animate;

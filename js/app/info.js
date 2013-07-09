@@ -12,7 +12,7 @@ define(
             Draw.init( state );
         };
 
-        Info.main = function( collection ){
+        Info.main = function(){
             Info.cellInfo();
         };
 
