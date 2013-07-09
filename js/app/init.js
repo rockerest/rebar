@@ -1,6 +1,6 @@
 define(
-    ["app/canvas", "app/animation", "app/tile", "app/animate", "image!img/spritemap.png", "image!img/animations.png", "json!app/settings.json" ],
-    function( Canvas, Animation, Tile, Animate, sprites, animations, Settings ){
+    [           "app/canvas", "app/animation", "app/tile", "app/animate", "image!img/spritemap.png", "image!img/animations.png", "json!app/settings.json" ],
+    function(   Canvas,       Animation,       Tile,       Animate,       sprites,                   animations,                 settings ){
         "use strict";
 
         var init = {},
@@ -51,7 +51,7 @@ define(
                 "scroll": {
                     "lastScrolledAt": 0
                 },
-                "settings": Settings
+                "settings": settings
             };
 
             return state;
