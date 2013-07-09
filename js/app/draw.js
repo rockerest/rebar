@@ -19,7 +19,6 @@ define(
         };
 
         Draw.main = function(){
-            state.canvas.reset();
             Load.backgroundScrollBuffer();
             Draw.background();
             Draw.overlay();
