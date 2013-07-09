@@ -1,4 +1,4 @@
-funWithHtml5
+rebar
 ============
 
-My first foray into HTML5.
+My goal is to create an extensible, easy-to-use, tile-based engine in HTML5.
