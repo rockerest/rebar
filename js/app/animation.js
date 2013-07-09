@@ -4,13 +4,14 @@ define(
         "use strict";
 
         function Animation( sprite ){
-            Cell.call( this, sprite );
+            this.sprite                 = sprite;
+            this.type                   = "animation";
 
-            this.lastFrameRenderedAt = 0;
-            this.currentFrame = 1;
+            this.lastFrameRenderedAt    = 0;
+            this.currentFrame           = 1;
         };
 
-        Animation.prototype = new Cell();
+        Animation.prototype             = new Cell();
         Animation.prototype.constructor = Animation;
 
         Animation.prototype.animate = function(){

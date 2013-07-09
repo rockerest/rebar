@@ -51,8 +51,8 @@ define(
                     for( j = view.top, y = 0; j < view.bottom; j++, y++ ){
                         cell = layer[i][j];
                         if( cell !== undefined ){
-                            type = cell.getType();
-                            imgSrc = type == "animated" ? anims : sprites;
+                            type    = cell.type;
+                            imgSrc = type == "animation" ? anims : sprites;
                             w = x * cell.width;
                             h = y * cell.height;
 
@@ -61,7 +61,7 @@ define(
                                 Draw.highlightTile( [w, h] );
                             }
 
-                            if( type == "animated" ){
+                            if( type == "animation" ){
                                 cell.animate();
                             }
                         }
@@ -87,28 +87,28 @@ define(
 
             switch( dir ){
                 case "right":
-                    x = canvas.width - 40;
+                    x = canvas.width - state.settings.scroll.barSize;
                     y = 0;
-                    w = 40;
+                    w = state.settings.scroll.barSize;
                     h = canvas.height;
                     break;
                 case "left":
                     x = 0;
                     y = 0;
-                    w = 40;
+                    w = state.settings.scroll.barSize;
                     h = canvas.height;
                     break;
                 case "top":
                     x = 0;
                     y = 0;
                     w = canvas.width;
-                    h = 40;
+                    h = state.settings.scroll.barSize;
                     break;
                 case "bottom":
                     x = 0;
-                    y = canvas.height - 40;
+                    y = canvas.height - state.settings.scroll.barSize;
                     w = canvas.width;
-                    h = 40;
+                    h = state.settings.scroll.barSize;
                     break;
                 default:
                     draw = false;
