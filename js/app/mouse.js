@@ -38,13 +38,9 @@ define(
 
         Mouse.click = function(){
             var mouse   = state.canvas.getMouse(),
-                cell    = Load.cellFromHighestLayer( Tile.findBestMatch( [mouse.x, mouse.y] ) ),
-                now     = (function(){ var d = new Date; return d.getTime(); }());
+                cell    = Load.cellFromHighestLayer( Tile.findBestMatch( [mouse.x, mouse.y] ) );
 
-            if( now >= cell.clickCooldown ){
-                cell.isHighlighted = !cell.isHighlighted;
-                cell.clickCooldown = now + 250;
-            }
+            cell.isHighlighted = !cell.isHighlighted;
         };
 
         Mouse.drag = function(){
@@ -53,7 +49,7 @@ define(
                 "y": mouse.y > mouse.dy ? mouse.dy : mouse.y,
                 "w": Math.abs(mouse.dx - mouse.x),
                 "h": Math.abs(mouse.dy - mouse.y),
-                "fill": "rgba( 0, 0, 0, .3 )"
+                "fill": state.settings.mouse.dragBoxColor
             });
         };
 

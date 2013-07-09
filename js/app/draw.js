@@ -76,7 +76,7 @@ define(
                 y: coords[1],
                 w: 16,
                 h: 16,
-                fill: "rgba( 255, 100, 100, .3 )"
+                fill: state.settings.cell.highlight
             });
         };
 
@@ -120,7 +120,7 @@ define(
                     y: y,
                     w: w,
                     h: h,
-                    fill: "rgba( 85, 85, 85, .6 )"
+                    fill: state.settings.scroll.barColor
                 });
             }
         };

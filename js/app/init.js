@@ -1,6 +1,6 @@
 define(
-    ["app/canvas", "app/animation", "app/tile", "app/animate", "image!img/spritemap.png", "image!img/animations.png" ],
-    function( Canvas, Animation, Tile, Animate, sprites, animations ){
+    ["app/canvas", "app/animation", "app/tile", "app/animate", "image!img/spritemap.png", "image!img/animations.png", "json!app/settings.json" ],
+    function( Canvas, Animation, Tile, Animate, sprites, animations, Settings ){
         "use strict";
 
         var init = {},
@@ -48,10 +48,10 @@ define(
                     "bottom": Math.ceil( (height - 5) / 16 ),
                     "left": 0
                 },
-
                 "scroll": {
                     "lastScrolledAt": 0
-                }
+                },
+                "settings": Settings
             };
 
             return state;

@@ -1,0 +1,13 @@
+{
+    "scroll":{
+        "rate": 90,
+        "barSize": 40,
+        "barColor": "rgba( 85, 85, 85, .6 )"
+    },
+    "mouse":{
+        "dragBoxColor": "rgba( 0, 0, 0, .3 )"
+    },
+    "cell":{
+        "highlight": "rgba( 255, 100, 100, .3 )"
+    }
+}
